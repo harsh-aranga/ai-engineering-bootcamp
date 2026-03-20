@@ -119,7 +119,8 @@ Cosine similarity can become limiting, however, because it misses differences in
 The cosine similarity and cosine distance have an inverse relationship. As the distance between two vectors increases, the similarity will decrease. Likewise, if the distance decreases, then the similarity between the two vectors increases.
 The cosine similarity is calculated as:
 
-![[Pasted image 20251221204347.png]]
+![Image](Pasted%20image%2020251221204347.png)
+
 
 >**A·B** is the product (dot) of the vectors A and B
 >**||A|| and ||B||** is the length of the two vectors
@@ -130,7 +131,7 @@ Let's use an example to calculate the similarity between two fruits – strawber
 Strawberry → `[4, 0, 1]`
 Blueberry → `[3, 0, 1]`
 
-![Cosine Example](https://weaviate.io/assets/images/cosine-example-8d0d8daca90c8d98d363c3006ff12910.png)
+![Cosine Example](Pasted%20image%2020260320213152.png))
 
 A distance of 0 indicates that the vectors are identical, whereas a distance of 2 represents opposite vectors. The similarity between the two vectors is 0.998 and the distance is 0.002. This means that strawberries and blueberries are closely related.
 ## **Dot product**
@@ -139,14 +140,14 @@ Euclidean distance measures the straight-line distance between vectors and is se
 To calculate Euclidean distance, you take the difference between the corresponding components of two vectors, square each difference, sum them up, and take the square root. A smaller Euclidean distance means the vectors are very close in terms of all their component values.
 
 The dot product takes two or more vectors and multiplies them together. It is also known as the scalar product since the output is a single (scalar) value. The dot product shows the alignment of two vectors. The dot product is negative if the vectors are oriented in different directions and positive if the vectors are oriented in the same direction.
-![[Pasted image 20251221204627.png]]
+![Image](Pasted%20image%2020251221204627.png)
 The dot product formula is:
-![[Pasted image 20251221204644.png]]
+![Image](Pasted%20image%2020251221204644.png)
 
 Use the dot product to recalculate the distance between the two vectors.
 Strawberry → `[4, 0, 1]`
 Blueberry → `[3, 0, 1]`
-![[Pasted image 20251221204700.png]]
+![Image](Pasted%20image%2020251221204700.png)
 The dot product of the two vectors is 13. To calculate the distance, find the negative of the dot product. The negative dot product, -13 in this case, reports the distance between the vectors. The negative dot product maintains the intuition that a shorter distance means the vectors are similar.
 
 Euclidean distance is typically the best choice when differences in feature values are meaningful. If a feature compares user profiles with count-based features (i.e., features that rely on the frequency of items, characteristics, or events), Euclidean distance can measure how much those attributes differ.
@@ -156,9 +157,9 @@ Euclidean distance measures the straight-line distance between vectors, treating
 The Squared Euclidean (L2-Squared) calculates the distance between two vectors by taking the sum of the squared vector values. The distance can be any value between zero and infinity. If the distance is zero, the vectors are identical. The larger the distance, the farther apart the vectors are.
 
 The squared euclidean distance formula is:
-![[Pasted image 20251221204740.png]]
+![Image](Pasted%20image%2020251221204740.png)
 The squared euclidean distance of strawberries `[4, 0, 1]` and blueberries `[3, 0, 1]` is equal to 1.
-![[Pasted image 20251221204754.png]]
+![Image](Pasted%20image%2020251221204754.png)
 
 A smaller Euclidean distance means vectors are closer in terms of all their component values. This metric works well when absolute differences in feature values matter—like comparing user profiles with count-based features where the frequency of items or events is meaningful.
 ## **When to use each metric**

@@ -6,7 +6,7 @@ Essentially, embeddings enable machine learning models to find similar objects. 
 Technically, embeddings are _vectors_ created by machine learning models for the purpose of capturing meaningful data about each object.
 **For example,** 
 1. The documents in the upper right of this two-dimensional space may be relevant to each other:
-![[Pasted image 20251221091333.png]]
+![Image](Pasted%20image%2020251221091333.png)
 
 2. A bird-nest and a lion-den are analogous pairs, while day-night are opposite terms. Embeddings convert real-world objects into complex mathematical representations that capture inherent properties and relationships between real-world data.
 ---

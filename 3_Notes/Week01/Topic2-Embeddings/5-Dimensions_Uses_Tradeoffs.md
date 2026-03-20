@@ -66,13 +66,13 @@ Real-World Use Cases:
 💡 Example: OpenAI’s text-embedding-3-large (3072-dim) beats text-embedding-3-small (1536-dim) on complex benchmarks — but costs 2x more and is 2x slower. Is the gain worth it? Only if your users demand precision.
 # Impact on Vector Databases: The Real Bottleneck
 Vector databases (Pinecone, Weaviate, Qdrant, Milvus) rely on Approximate Nearest Neighbor (ANN) search — and dimensionality directly affects performance. 
-![[Pasted image 20251221211553.png]]
+![Image](Pasted%20image%2020251221211553.png)
 ## The Curse of Dimensionality: 
 As dimensions grow, the distance between points becomes less meaningful. ANN algorithms (HNSW, IVF, etc.) struggle to distinguish “near” from “far” — leading to noisier results unless you increase index complexity (which costs even more).
 
 🔍 Pro Tip: For dimensions >1000, use quantization (e.g., PQ, SQ) to compress vectors without losing much accuracy. Most vector DBs support this.
 # Retrieval Quality: Small vs. Large Dimensions 
-![[Pasted image 20251221211923.png]]
+![Image](Pasted%20image%2020251221211923.png)
 ## The Rule of Thumb:
 - **500 dim**: Good for “keyword+” search.
 - **768–1536 dim**: Best balance for enterprise RAG.
@@ -95,7 +95,7 @@ Why?
 > "**Don’t default to “bigger is better.”**
 > "Choose dimensions based on your **use case**, **latency requirements**, and **budget**."
 
-![[Pasted image 20251221212159.png]]
+![Image](Pasted%20image%2020251221212159.png)
 # Bonus: 3 Questions to Ask Before Choosing Dimensions
 Do my users notice the difference between “good” and “perfect” results?
 → If not, go small.
