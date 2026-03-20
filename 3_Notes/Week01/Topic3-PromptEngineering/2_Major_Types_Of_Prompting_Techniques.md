@@ -31,7 +31,7 @@ This approach offers multiple examples to the model, enhancing its understanding
 Chain-of-Thought prompting is a technique that improves the performance of language models by **explicitly prompting the model to generate a step-by-step explanation or reasoning process before arriving at a final answer**. This method helps the model to break down the problem and not skip any intermediate tasks to avoid reasoning failures.
 
 CoT is effective because it helps focus the attention mechanism of the LLM. The decomposition of the reasoning process makes the model focus its attention on one part of the problem at a time, minimizing the risk of errors that might arise from handling too much information simultaneously.
-![[Pasted image 20251223102343.png]]
+![Image](Pasted%20image%2020251223102343.png)
 
 ## Why chain prompts?
 1. **Accuracy**: Each subtask gets LLM's full attention, reducing errors.

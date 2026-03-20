@@ -50,7 +50,7 @@ Retrieval-augmented generation, or RAG, is a technique that uses authoritative, 
 2. Retrieval: relevant data is retrieved from an external data source based on a user query
 3. Augmentation: the retrieved data and the user query are combined into a prompt to provide the model with context for the generation step
 4. Generation: the model generates output from the augmented prompt, using the context to drive a more accurate and relevant response.
-![[Pasted image 20260309183652.png]]
+![Image](Pasted%20image%2020260309183652.png)
 
 ---
 # Benefits of RAG
@@ -110,7 +110,7 @@ By sending both the search results and the user’s question as context to the L
 Using the augmented prompt, the LLM now has access to the most pertinent and grounding facts from your vector database so your application can provide an accurate answer for your user, reducing the likelihood of hallucination.
 
 But RAG is no longer simply about searching for the right piece of information to inform a model response. With agentic RAG, it's about deciding which questions to ask, which tools to use, when to use them, and then aggregating results to ground answers.
-![[Pasted image 20260309195933.png]]
+![Image](Pasted%20image%2020260309195933.png)
 
 ---
 # SIDE NOTE: DENSE VS SPARSE VECTORS
