@@ -138,7 +138,7 @@ def _build_log_path(caller_file: str) -> Path:
 
     # Construct: logs/<relative_dir>/<script_name>/<date>/<script_name>_<message>_<time>.log
     log_dir = project_root / "logs" / relative_dir / script_name / date_str
-    log_filename = f"{script_name}_{run_message}_{time_str}.log"
+    log_filename = f"{script_name}_{time_str}_{run_message}.log"
 
     return log_dir / log_filename
 
