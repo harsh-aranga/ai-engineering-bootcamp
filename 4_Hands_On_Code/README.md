@@ -47,8 +47,10 @@ ANTHROPIC_API_KEY=sk-ant-your-key-here
 ├── common/                  # Shared utilities
 │   ├── config.py            # .env loader
 │   ├── constants.py         # Hardcoded values (models, limits)
-│   └── logger.py            # Auto-structured logging
+│   ├── logger.py            # Auto-structured logging
+│   └── dumper.py            # JSON/data artifact persistence
 ├── logs/                    # Generated logs (git-ignored)
+├── json/                    # Dumped JSON artifacts (git-ignored)
 ├── week01_foundations/
 │   ├── topic1_tokenization/
 │   ├── topic2_embeddings/
@@ -87,13 +89,28 @@ Run with optional message for log filename:
 python my_script.py --run_message="testing chunking with 512 tokens"
 ```
 
-Creates: `logs/<path>/<script>/<date>/<script>_<message>_<timestamp>.log`
+Creates: `logs/<path>/<script>/<date>/<script>_<timestamp>_<message>.log`
+
+### Dumper (JSON Artifacts)
+```python
+from common.logger import get_logger
+from common.dumper import dump_json
+
+logger = get_logger(__file__)  # Must call first
+logger.info("Got embeddings")
+
+dump_json(embedding_response.model_dump(), "embedding_response")
+```
+
+Creates: `json/<path>/<script>/<date>/<script>_<timestamp>_<message>_<label>.json`
+
+The JSON file correlates with the log file — same timestamp, same run message.
 
 ## Running Examples
 
 Each topic folder contains runnable Python scripts:
 ```bash
-python week01_foundations/topic1_tokenization/example_script.py
+python week01_foundations/topic1_tokenization/example_script.py --run_message="first test"
 ```
 
 *See the notes project for theory and concepts.*

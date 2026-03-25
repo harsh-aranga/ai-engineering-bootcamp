@@ -2,13 +2,14 @@
 logger.py — Structured logging with automatic path generation.
 
 Creates log files that mirror the source directory structure:
-    logs/week01_foundations/topic1_tokenization/prg1/2026-03-24/prg1_my_message_143022123456.log
+    logs/week01_foundations/topic1_tokenization/prg1/2026-03-24/prg1_143022123456_my_message.log
 
 Features:
     - Auto-captures --run_message from CLI (no boilerplate in scripts)
     - Builds log path from caller's __file__
     - Writes to file AND console simultaneously
     - All log levels captured (DEBUG and up)
+    - Exposes run context for dumper.py
 
 Usage:
     from common.logger import get_logger
@@ -24,6 +25,10 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
+
+
+# --- Shared state for dumper.py ---
+_current_run_context: dict | None = None
 
 
 def _find_project_root() -> Path:
@@ -109,7 +114,7 @@ def _build_log_path(caller_file: str) -> Path:
 
     Example:
         caller_file: /path/to/4_Hands_On_Code/week01_foundations/topic1_tokenization/prg1.py
-        returns: /path/to/4_Hands_On_Code/logs/week01_foundations/topic1_tokenization/prg1/2026-03-24/prg1_my_message_143022123456.log
+        returns: /path/to/4_Hands_On_Code/logs/week01_foundations/topic1_tokenization/prg1/2026-03-24/prg1_143022123456_my_message.log
 
     Args:
         caller_file: the __file__ of the script requesting a logger
@@ -117,6 +122,8 @@ def _build_log_path(caller_file: str) -> Path:
     Returns:
         Full path to the log file
     """
+    global _current_run_context
+
     project_root = _find_project_root()
     caller_path = Path(caller_file).resolve()
 
@@ -136,11 +143,38 @@ def _build_log_path(caller_file: str) -> Path:
     time_str = now.strftime("%H%M%S") + f"{now.microsecond:06d}"
     run_message = _extract_run_message()
 
-    # Construct: logs/<relative_dir>/<script_name>/<date>/<script_name>_<message>_<time>.log
+    # Store context for dumper.py
+    _current_run_context = {
+        "project_root": project_root,
+        "relative_dir": relative_dir,
+        "script_name": script_name,
+        "date_str": date_str,
+        "time_str": time_str,
+        "run_message": run_message,
+    }
+
+    # Construct: logs/<relative_dir>/<script_name>/<date>/<script_name>_<time>_<message>.log
     log_dir = project_root / "logs" / relative_dir / script_name / date_str
     log_filename = f"{script_name}_{time_str}_{run_message}.log"
 
     return log_dir / log_filename
+
+
+def get_run_context() -> dict:
+    """
+    Get the current run context for use by dumper.py.
+
+    Returns:
+        Dict with project_root, relative_dir, script_name, date_str, time_str, run_message
+
+    Raises:
+        RuntimeError: if get_logger() hasn't been called yet
+    """
+    if _current_run_context is None:
+        raise RuntimeError(
+            "No run context available. Call get_logger(__file__) first."
+        )
+    return _current_run_context
 
 
 def get_logger(caller_file: str) -> logging.Logger:
