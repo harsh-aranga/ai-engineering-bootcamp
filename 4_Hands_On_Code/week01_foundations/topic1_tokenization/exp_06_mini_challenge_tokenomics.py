@@ -1,5 +1,5 @@
 """
-This script corresponds to Day 1-2->Day 2->Hour 1-2->Mini Build->
+This script corresponds to Day 1-2->Day 2->Hour 1->Mini Challenge->
 Build a Python function that:
 
 Input: A string + model name
