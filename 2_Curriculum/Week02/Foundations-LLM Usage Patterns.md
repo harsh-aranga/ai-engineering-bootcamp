@@ -90,13 +90,13 @@ def robust_response(
     instructions: str | None = None,
     stream: bool = False,
     max_retries: int = 3
-) -> dict | Generator:
+) -> dict:
     """
     Makes a Responses API call with:
     - Automatic retries with exponential backoff for transient errors
     - Proper handling of rate limits (wait and retry)
     - Timeout handling
-    - Streaming support
+    - Streaming support (prints chunks, returns final result)
     - Returns structured response with content + usage stats
     """
     pass
@@ -107,7 +107,7 @@ def robust_response(
 - [ ] Retries on 429 (rate limit) with exponential backoff
 - [ ] Retries on 500/502/503 (server errors) up to `max_retries`
 - [ ] Does NOT retry on 400 (bad request) — that's your bug, not transient
-- [ ] Streaming mode yields chunks as they arrive
+- [ ] Streaming support (prints chunks, returns final result)
 - [ ] Non-streaming mode returns: `{"content": "...", "usage": {...}, "status": "...", "id": "..."}`
 - [ ] Logs retries so you know when they happen
 - [ ] Has a timeout (30 seconds default) — doesn't hang forever
