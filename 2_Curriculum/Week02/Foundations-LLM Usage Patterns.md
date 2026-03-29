@@ -81,17 +81,18 @@ Every RAG system and every Agent makes LLM calls. If your API layer is fragile, 
 
 **Hour 1 — Mini Challenge:**
 
-Build a function `robust_chat_completion()` that:
+Build a function `robust_response()` that:
 
 ```python
-def robust_chat_completion(
-    messages: list,
+def robust_response(
+    input: str | list[dict],
     model: str = "gpt-4o-mini",
+    instructions: str | None = None,
     stream: bool = False,
     max_retries: int = 3
 ) -> dict | Generator:
     """
-    Makes a chat completion call with:
+    Makes a Responses API call with:
     - Automatic retries with exponential backoff for transient errors
     - Proper handling of rate limits (wait and retry)
     - Timeout handling
@@ -101,16 +102,17 @@ def robust_chat_completion(
     pass
 ```
 
-**Success Criteria:**
+### Success Criteria:
 
 - [ ] Retries on 429 (rate limit) with exponential backoff
-- [ ] Retries on 500/502/503 (server errors) up to max_retries
+- [ ] Retries on 500/502/503 (server errors) up to `max_retries`
 - [ ] Does NOT retry on 400 (bad request) — that's your bug, not transient
 - [ ] Streaming mode yields chunks as they arrive
-- [ ] Non-streaming mode returns: `{"content": "...", "usage": {...}, "finish_reason": "..."}`
-- [ ] Logs retries (print is fine) so you know when retries happen
+- [ ] Non-streaming mode returns: `{"content": "...", "usage": {...}, "status": "...", "id": "..."}`
+- [ ] Logs retries so you know when they happen
 - [ ] Has a timeout (30 seconds default) — doesn't hang forever
 - [ ] Tested with at least 3 scenarios: success, simulated retry, simulated failure
+
 
 **Hour 2 — Solidify + Ponder**
 
