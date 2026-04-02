@@ -11,7 +11,7 @@ Boolean fields (remote) correctly inferred even when not explicit ("work from ho
 List fields (required_skills) correctly parsed from various formats (comma-separated, bullet points, etc.)
 Raises meaningful error if text is completely unrelated to schema
 """
-from typing import Type, T
+from typing import Type, TypeVar
 
 from openai.types.responses import Response, ParsedResponse
 from pydantic import BaseModel, Field
@@ -26,6 +26,8 @@ logger = get_logger(__file__)
 config = get_config()
 open_ai_key = config.get("OPEN_AI_KEY")
 openai_client = OpenAI(api_key=open_ai_key)
+
+T = TypeVar("T", bound=BaseModel)
 
 SYSTEM_PROMPT_JOB_EXTRACTION = """
 You are a job post extractor script. Your job is to extract the details from job description provided to you. It must match the pydantic model provided along.
