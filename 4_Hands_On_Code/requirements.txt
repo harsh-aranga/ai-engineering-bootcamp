@@ -12,6 +12,10 @@ langchain-text-splitters==1.1.1
 langchain-community==0.4.1
 beautifulsoup4==4.14.3
 
+pypdf==6.9.2
+unstructured[all-docs]==0.22.12
+Markdown==3.10.2
+certifi==2026.2.25
 
 # Add later as needed for RAG/Agents
 # chromadb==1.5.5
