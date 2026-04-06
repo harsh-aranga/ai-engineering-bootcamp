@@ -1,5 +1,5 @@
 """
-This script corresponds to Day 5-6->Day 2->Hour 2->Experiments->
+This script corresponds to Day 1-2->Day 2->Hour 2->Experiments->
 1. Using OpenAI playground or API, define a simple function (e.g., get_weather(city))
 2. Ask the model a question that requires the function
 3. See how the model responds — it doesn't call the function, it tells you it WANTS to call it
