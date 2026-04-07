@@ -18,6 +18,8 @@ unstructured[all-docs]==0.22.12
 Markdown==3.10.2
 certifi==2026.2.25
 
+chromadb==1.5.6
+sentence-transformers==5.3.0
 # Add later as needed for RAG/Agents
 # chromadb==1.5.5
 # langgraph==1.1.3

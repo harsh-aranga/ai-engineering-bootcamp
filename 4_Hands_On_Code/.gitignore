@@ -181,5 +181,6 @@ poetry.toml
 pyrightconfig.json
 
 chroma_langchain_db/
+chroma-db/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
